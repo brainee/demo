@@ -1,0 +1,26 @@
+﻿@{
+  ViewBag.Title = "index";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/restful',
+  viewName: 'restfulLocalstorage',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/restful/localstorage.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<button class='js-login btn-primary'>模拟登陆</button>
+</script>

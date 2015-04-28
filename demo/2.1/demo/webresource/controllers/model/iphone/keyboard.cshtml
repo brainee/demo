@@ -1,0 +1,33 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "iphone";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: 'iphone/keyboard',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'iphoneKeyboard',
+  controller: '/webapp/demo2.1/webresource/controllers/iphone/keyboard.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+  <form class="form">
+    <div class="form-item">
+      <label class="field-label">Email</label>
+      <input type="text" class="field-text js-keyboard-input">
+    </div>
+    <input type="file" class="js-keyboard-down">收起键盘</span>
+  </form>
+  
+</script>

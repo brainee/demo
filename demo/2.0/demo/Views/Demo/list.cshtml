@@ -1,0 +1,81 @@
+﻿@using System.Configuration;
+@{
+    ViewBag.Title = "list";
+}
+<script type="text/lizard-config">
+{
+  url_schema: '/list',
+  model:{
+    apis: [{
+      url: '@ConfigurationManager.AppSettings["restfullApi"]index',
+      suspend: function() {
+        // seo情况下才发这个请求
+        return Lizard.runAt == 'client';
+      }
+    }],
+    filter: function(datas) {    //注意这里datas是个数组,一个接口对应一个
+       var cityid = parseInt(Lizard.P('cityid'), 10) - 1;
+       var list = [
+          [{
+            title: '北京酒店1',
+          },
+          {
+            title: '北京酒店2'
+          }],
+          [{
+            title: '上海酒店1'
+          }, {
+            title: '上海酒店2'
+          }]
+       ]
+       return {
+         list: list[cityid]
+       };
+    },
+    setTDK: function(datas) {   //只在SEO中有用， 来渲染title description keyword
+       return {
+         title: 'title',
+         description: 'description',
+         keywords: 'keywords'
+       };
+   }
+  },
+  view:{
+    header: Lizard.T('headTmpl'),   //可以不要           
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo/webresource/controllers/list.js'
+}
+</script>
+<script id="headTmpl" type="text/lizard-template">
+ <div>list</div>
+</script>
+<script id="viewportTmpl" type="text/lizard-template">
+  <h2>跳转, 注意两个的区别</h2>
+  <button class="js-jump3" title="不带cache">跳详情页</button>
+  <button class="js-jump4" title="带cache">跳详情页</button>
+  <br>
+  <strong>跨频道:</strong>
+  <button class="js-jump">跳native和h5</button>
+  <button class="js-jump1">跳hybrid和h5</button>
+  <button class="js-jump2">跳hybrid和h5 带参数</button>
+  <br>
+  <strong>跳出去的:</strong>
+  <a href="http://m.ctrip.com/html5/" class="js-ctrip" lizard-catch="off">ctrip</a>
+  <h2>model</h2>
+  <button class="js-model">excute</button>
+  <h2>localStorage, 只有一个值的</h2>
+  <button class="js-localstore1-set">set</button>
+  <button class="js-localstore1-get">get</button>
+  <button class="js-localstore1-remove">remove</button>
+  <h2>localStorage, 值是一个对象</h2>
+  <button class="js-localstore2-set">set</button>
+  <button class="js-localstore2-get">get</button>
+  <button class="js-localstore2-setAttr">setAttr</button>
+  <button class="js-localstore2-getAttr">getAttr</button>
+  <button class="js-localstore2-add">add</button>
+  <button class="js-update-header">updateHeader</button><br>
+  <input type="text" class="js-input demo-input">
+  <%= JSON.stringify(localStorage) %>
+  
+</script>

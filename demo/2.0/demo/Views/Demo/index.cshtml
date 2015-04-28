@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "index";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/index',
+
+  models: {
+     apis: [],
+     filter: function(datas) {
+        return {};
+     }
+  },
+  view:{
+     viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'demoIndex',
+  controller: '/webapp/demo/webresource/controllers/index.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<article class="wrap" id="wrapper">
+  <div class="cui-view" id="cui-1417416605273">
+    <section class="cui-citys-hd ">
+      <div class="cui-input-bd">
+        <input type="text" class="cui-input-box" placeholder="中文/拼音/首字母">
+        <span class="cui-pro-load" style="display: none;">
+          <span class="cui-pro-radius"></span>
+          <span class="cui-i cui-pro-logo"></span>
+        </span>
+      </div>
+      <button type="button" class="cui-btn-cancle">取消</button>
+    </section>
+    <p class="cui-city-novalue" style="display: none;">没有结果</p>
+    <ul class="cui-city-associate seach-list"></ul>
+    <section class="cui-citys-bd">
+      <div class="cui-view" id="cui-1417416605274">
+        <ul class="cui-city-itmes">
+          <li data-groupindex="1" data-key="" class="cui-arrow-open">
+            <span class="cui-city-t">常用插件</span>
+            <ul class="cui-city-n">
+              <li data-skey="item_2" data-groupflag="0" data-filter="list" data-key="2" data-index="1,0" data-flag="c" class="js-index-jump"> 跳转 </li>
+              <li data-skey="item_3" data-groupflag="0" data-filter="filter" data-key="3" data-index="1,1" data-flag="c" class="js-index-jump"> seo方法公用 </li>
+              <li data-skey="item_4" data-groupflag="0" data-filter="ui" data-key="4" data-index="1,2" data-flag="c" class="js-index-jump"> UI </li>
+              <li data-skey="item_5" data-groupflag="0" data-filter="model" data-key="5" data-index="1,3" data-flag="c" class="js-index-jump"> model </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</article>
+<div class="js-test-precompile">
+</div>
+</script>
+

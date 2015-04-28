@@ -1,0 +1,35 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "appBaseUrl";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: 'lizard/restfullApi',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'index',
+  controller: '/webapp/demo2.1/webresource/controllers/lizard/restfullApi.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h3>说明</h3>
+
+<pre><code>
+通过配置&lt;meta name="restfullApi" content="http://127.0.0.1:2000/restful/"&gt; 
+lizard会赋值到restfullApi属性上
+
+Lizard.restfullApi
+</code></pre>
+<h3>实战</h3>
+<pre class="js-log"></pre>
+</script>

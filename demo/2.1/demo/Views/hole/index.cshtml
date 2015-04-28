@@ -1,0 +1,27 @@
+@using System.Configuration;
+@{
+  ViewBag.Title = "hole";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: 'xx/...',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'holeIndex',
+  controller: '/webapp/demo2.1/webresource/controllers/hole/index.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+  <div class="cui-citys-bd">
+  </div>
+</script>

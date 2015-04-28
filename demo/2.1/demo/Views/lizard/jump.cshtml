@@ -1,0 +1,40 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "jump";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/lizard/jump',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'jump',
+  controller: '/webapp/demo2.1/webresource/controllers/lizard/jump.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+* jump跳转，Lizard 2.1支持，和goTo的区别在于不用传参数
+* 在web环境下, href会跳转至http://m.ctrip.com/webapp/ticket/index
+* hybrid环境中会打开ticket/index.html#/webapp/ticket/index
+*/
+方式一：
+Lizard.jump('http://m.ctrip.com/webapp/ticket/index')
+方式二：
+//web环境下会跳转至domain/ticket/index.html
+//hybrid环境中会打开ticket/index.html#/webapp/ticket/index
+Lizard.jump('ticket/index.html')
+</code></pre>
+<h2 class="guide-title">实例展示</h2>
+<button class="btn_blue js-jump">跳转</button>
+</script>

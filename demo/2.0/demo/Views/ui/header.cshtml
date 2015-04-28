@@ -1,0 +1,26 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "ui";
+}
+<script type="text/lizard-config">
+{
+  url_schema: '/ui/header',
+  model:{
+    apis: [],
+    filter: function(datas) {
+    return {};
+    },
+    setTDK: function(datas) {
+      return {
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo/webresource/controllers/ui/header.js'
+}
+</script>
+<script id="viewportTmpl" type="text/lizard-template">
+
+</script>

@@ -1,0 +1,55 @@
+﻿@{
+  ViewBag.Title = "Ui index";
+}
+<script type="text/lizard-config">
+{
+  url_schema: '/ui',
+  viewName: 'ui_tab',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/ui/tab.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+ <div class="cui-citys-bd">
+ </div>
+
+<pre><code>
+var scope = this;
+var data = [
+  { id: 1, name: '中国' },
+  { id: 2, name: '美国' },
+  { id: 3, name: '日本' }
+];
+if (!this.tab01) {
+  this.tab01 = new UITab({
+    datamodel: {
+      data: data
+    },
+    onChange: function (data) {
+      scope.$('.js_sec01').html(data.name);
+    },
+    wrapper: this.$el.find('.js_demo01')
+  });
+}
+this.tab01.show();
+this.$('.js_sec01').html(data[this.tab01.getIndex()].name);
+</code></pre>
+
+<div class="js_demo01"></div><br />
+<span class="btn-primary full-width js_sec01"></span>
+
+
+<br />
+  <br />
+</script>

@@ -1,0 +1,1 @@
+define(["cPageView"],function(e){var n=e.extend({events:{},onCreate:function(){},onShow:function(){this.header.set({title:"标题",back:!0,events:{returnHandler:function(){Lizard.goBack()}}}),this.header.show()},onHide:function(){}});return n});

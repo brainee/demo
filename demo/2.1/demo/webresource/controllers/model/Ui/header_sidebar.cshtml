@@ -1,0 +1,91 @@
+﻿@{
+  ViewBag.Title = "Ui header";
+}
+<script type="text/lizard-config">
+  {
+  url_schema: '/ui',
+  models: {
+  apis: [],
+  filter: function(datas) {
+  return {
+
+  };
+  }
+  },
+  view:{
+  viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'uiheadersidebar',
+  controller: '/webapp/demo2.1/webresource/controllers/ui/header_sidebar.js'
+  }
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+
+<pre>
+<code>
+/*
+侧边栏功能依旧保持老接口的调用，调用方法如下
+*/
+  this.header.set({
+  view: this,
+  title: '侧边栏的使用',
+  back:
+  {
+    'tagname': 'back', callback: function () {
+      console.log('back')
+      Lizard.goBack();
+    }
+  },
+  right: [
+    {tagname: 'home'}
+  ],
+  //这里侧边栏会被内部框架封装
+  moreMenus: [
+    {
+      tagname: 'share', value: '分享', callback: function () {
+        console.log('分享');
+      }
+    },
+    {
+      tagname: 'comment', value: '预约携程', callback: function () {
+        console.log('预约携程');
+      }
+    },
+    {
+      tagname: 'tel', value: '联系携程', callback: function () {
+        console.log('联系携程');
+      }
+    },
+    {
+      tagname: 'compass', value: '团队助手', callback: function () {
+        console.log('团队助手');
+      }
+    },
+    {
+      tagname: 'file', value: '我的订单', callback: function () {
+        console.log('我的订单');
+      }
+    },
+    {
+      tagname: 'love', value: '我的收藏', callback: function () {
+        console.log('我的收藏');
+      }
+    },
+    {
+      tagname: 'email', value: '消息中心', callback: function () {
+        console.log('消息中心');
+      }
+    },
+    {
+      tagname: 'home', value: '携程首页', callback: function () {
+        console.log('携程首页');
+      }
+    }
+  ]
+});
+</code>
+</pre>
+
+
+</script>

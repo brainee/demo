@@ -1,0 +1,12 @@
+
+style/style.css
+----------------
+style/style.css
+
+demoConfig.js
+----------------
+demoConfig.js
+model/demoModel.js
+model/demoStore.js
+text.js
+text!indexHtml

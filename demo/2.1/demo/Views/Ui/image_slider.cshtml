@@ -1,0 +1,133 @@
+﻿@{
+  ViewBag.Title = "Ui index";
+}
+<script type="text/lizard-config">
+{
+  url_schema: 'ui/image_slider',
+  viewName: 'ui_image_slider',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/ui/image_slider.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<style>
+  .cm-slide-item img {
+    width: 100%;
+  }
+
+</style>
+ <div class="cui-citys-bd">
+ </div>
+
+<pre><code>
+/*
+这里有两点需要注意：
+  ① resize时候动态的改变了包裹层div高宽，imageslider组件会自动适应
+  ② onHide的时候要注释事件
+  */
+_resetWrapper: function () {
+  var scope = this;
+  var resetWrapper = function () {
+    var demo = scope.$('.demo01');
+    var flag = parseInt(demo.width() - 400);
+    demo.height(150 + 0.4 * flag);
+    scope.$('.demo02').height(150 + 0.4 * flag);
+  };
+  resetWrapper();
+  $(window).on('resize.imageslider1', $.proxy(function () {
+    resetWrapper();
+  }, this));
+},
+demo01: function () {
+  if (this.imgSlider01) return;
+  var data = [
+      { id: 1, src: '../webresource/style/imgs/1.jpg', href: './res/img/1.jpg' },
+      { id: 2, src: '../webresource/style/imgs/2.jpg', href: './res/img/2.jpg' },
+      { id: 3, src: '../webresource/style/imgs/3.jpg', href: './res/img/3.jpg' },
+      { id: 4, src: '../webresource/style/imgs/4.jpg', href: './res/img/4.jpg' }
+  ];
+  this.imgSlider01 = new UIImageSlider({
+    datamodel: {
+      data: data,
+      itemFn: function (item) {
+        return '&lt;img data-src="' + item.src + '" src="' + item.src + '"&gt;';
+      }
+    },
+    displayNum: 1,
+    wrapper: this.$('.demo01')
+  });
+  this.imgSlider01.show();
+},
+</code></pre>
+  <input class="demo111" />
+  <section class="demo01" style=" width: 92%; border: 1px solid black; margin: 0px auto;">
+   
+  </section>
+<pre><code>
+//这里将轮播工具条重写了
+demo02: function () {
+  if (this.imgSlider02) return;
+  var data = [
+      { id: 1, src: '../webresource/style/imgs/1.jpg', href: './res/img/1.jpg' },
+      { id: 2, src: '../webresource/style/imgs/2.jpg', href: './res/img/2.jpg' },
+      { id: 3, src: '../webresource/style/imgs/3.jpg', href: './res/img/3.jpg' },
+      { id: 4, src: '../webresource/style/imgs/4.jpg', href: './res/img/4.jpg' }
+  ];
+  this.imgSlider02 = new UIImageSlider({
+    datamodel: {
+      data: data,
+      itemFn: function (item) {
+        return '&lt;img data-src="' + item.src + '" src="' + item.src + '"&gt;';
+      }
+    },
+    createNav: function () {
+      if (this.sliderNav) return;
+      var nav = '&lt;div class="cui-navContainer cui-slide-nav-new" style="background: #f2f2f2; color: rgb(20, 145, 197); position: absolute;  bottom: 0;"&gt;';
+      for (var i = 0; i < this.itemNum; i++) {
+        nav += '&lt;span class="cui-slide-nav-item" data-index="' + i + '"&gt;&lt;/span&gt;';
+      }
+      nav += '&lt;/div&gt;';
+      this.sliderNav = $(nav);
+      this.sliderNav.find('span').width(this.wrapper.width() / this.itemNum - 1);
+      this.$el.append(this.sliderNav);
+      this.setzIndexTop(this.sliderNav);
+      this._setNavIndex(this.datamodel.index);
+    },
+    displayNum: 1,
+    wrapper: this.$('.demo02')
+  });
+  this.imgSlider02.show();
+},
+</code></pre>
+  <style>
+    .cui-slide-nav-new span {
+      background: rgba(0,0,0,.5);
+      border-radius: 0;
+      margin: 0;
+      height: 4px;
+      opacity: 0.6;
+    }
+
+    .cui-slide-nav-new .cui-slide-nav-item-current {
+      background: #ff9913;
+      opacity: 1;
+    }
+  </style>
+
+  <section class="demo02" style=" width: 92%; border: 1px solid black; margin: 0px auto;">
+  </section>
+  <br />
+  <br />
+  <br />
+</script>

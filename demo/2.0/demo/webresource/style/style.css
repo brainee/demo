@@ -1,0 +1,97 @@
+button {
+  background: orange;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.list li {
+  line-height: 24px;
+}
+
+.border {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+a {
+  color: blue;
+}
+
+.hide {
+  display: none;
+}
+
+.demo-input {
+  border: 1px solid #ccc;
+}
+
+.img {
+  background-image: url(http://pic.c-ctrip.com/h5/giftcard/nav_bg.png);
+}
+
+.js-btn{
+    background-color: Orange;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+    height: 34px;
+    width: auto !important;
+    padding: 0 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 27px;
+}
+header .i_tri {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    vertical-align: 3px;
+    -webkit-transform: rotateZ(-45deg);
+    -ms-transform: rotateZ(-45deg);
+    transform: rotateZ(-45deg);
+    overflow: hidden;
+}
+
+.img2 {
+  background-image: url(http://m.ctrip.com/webapp/car/dest/webresource/res/img/index1.jpg);
+}
+
+.img3 {
+  background-image: url(//pic.c-ctrip.com/h5/group_travel/un_entry_2014915.png?20140915.png);
+}
+
+.img3 {
+  background-image: url(//pic.c-ctrip.com/h5/group_travel/un_entry_2014915.png?20140915.png);
+}
+
+.img3 {
+  background-image: url(//pic.c-ctrip.com/h5/group_travel/un_entry_2014915.png?20140915.png);
+}
+
+.img2 {
+  background-image: url(http://m.ctrip.com/webapp/car/dest/webresource/res/img/index1.jpg);
+}
+
+.img4 {
+  background: url("../img/57.png");
+}
+
+.img5 {
+  background: url(http://404.errorfound.com);
+}
+
+.img6 {
+  background: url(http://pic.c-ctrip.com/flight_intl/airline_logo/40x35/MU.png);
+}

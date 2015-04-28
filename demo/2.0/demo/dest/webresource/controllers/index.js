@@ -1,0 +1,1 @@
+define(["cPageView"],function(e){var n=e.extend({events:{"click .js-index-jump":"indexJumpAction"},onCreate:function(){},onShow:function(){this.header.set({title:"2.0框架相关demo",events:{returnHandler:function(){_log("返回")}}}),this.header.show()},onHide:function(){},indexJumpAction:function(e){var n=this.$(e.target).attr("data-filter");Lizard.goTo(Lizard.appBaseUrl+n)}});return n});

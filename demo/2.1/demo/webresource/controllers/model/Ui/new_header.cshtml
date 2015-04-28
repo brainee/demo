@@ -1,0 +1,114 @@
+﻿@{
+  ViewBag.Title = "Ui header";
+}
+<script type="text/lizard-config">
+  {
+  url_schema: '/ui',
+  models: {
+  apis: [],
+  filter: function(datas) {
+  return {
+
+  };
+  }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'new_header',
+  controller: '/webapp/demo2.1/webresource/controllers/ui/new_header.js'
+  }
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+  
+
+<pre>
+<code>
+/*
+新接口如下，推荐接口调用方法为：
+view: true, //设置回调函数所处作用域
+{
+back: {}, //返回处设置参数
+center: {},  //标题处设置参数
+right: [{}, {}] //右边按钮集合，这里会按序排列
+}
+
+header组件底层结构，left、center、right皆为数组，可保护多个标题对象，单个标题对象一般是这样的：
+{
+  tagname: '', //唯一标识，必须
+  callback: function() {}, //如果设置了变会有相关回调，如果设置了view回调会处于其作用域
+  value: '', //如果不设置该属性，会生成icon图标类点击，设置了会生成文字按钮
+  itemFn: function() {}, //要求返回一个字符串，不设置会根据规则生成按钮dom，设置了会根据itemFn生成
+}
+
+value为空时生成dom为：
+&lt;span class="cm-header-icon js_tagname"&gt;
+  &lt;i class="icon-tagname"&gt;&lt;/i&gt;
+&lt;/span&gt;
+
+value有值的会生成如下dom
+&lt;span class="cm-header-btn fr  js_tagname"&gt;登录&lt;/span&gt;
+
+其中js_为javascript调用要用到的钩子，所以自己itemFn生成的dom也要满足这样规则
+
+
+*/
+this.header.set({
+  view: this,
+  back:
+  {
+    'tagname': 'back', callback: function () {
+      console.log('back')
+      Lizard.goBack();
+    }
+  },
+  right: [
+    {
+      'tagname': 'home', callback: function () {
+        console.log('返回');
+      }
+    },
+    { 'tagname': 'search' },
+    {
+      'tagname': 'list', callback: function (e) {
+        if (!scope.list) {
+          var data = [{ name: 'span class="center"北京出发/span' },
+            { name: 'span class="center"杭州出发/span' },
+            { name: 'span class="center"成都出发/span' },
+            { name: 'span class="center"广州出发/span' }];
+          scope.list = new UIBubbleLayer({
+            datamodel: {
+              data: data
+            },
+            triggerEl: $(e.currentTarget),
+            width: '130px',
+            triangleLeft: '25px',
+            onClick: function (data, index) {
+              this.hide();
+            }
+          });
+        }
+        scope.list.show();
+      }
+    },
+    {
+      'tagname': 'custom', 'value': '定制化',
+      itemFn: function () {
+        return 'span class="cm-header-btn fr js_custom"定制化/span';
+      },
+      callback: function () {
+        console.log('定制化');
+      }
+    }
+  ],
+  //这里写title或者center都是支持的
+  center: {
+    'tagname': 'title', 'value': ['大标题', '小标题']
+  }
+});
+
+</code>
+
+</pre>
+</script>

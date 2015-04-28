@@ -1,0 +1,30 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "showToast";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'showToast',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/showToast.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">实例展示</h2>
+<p></p>
+<span class="btn-primary js-toast-basic">基本使用</span>
+<span class="btn-primary js-toast-nomask">无蒙层</span>
+<span class="btn-primary js-toast-close">关闭设置</span>
+</script>

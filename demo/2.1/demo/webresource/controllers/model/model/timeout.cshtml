@@ -1,0 +1,32 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "timeout";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/model',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'modelTimeout',
+  controller: '/webapp/demo2.1/webresource/controllers/model/timeout.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * 单个model设置超时
+ */
+<h2 class="guide-title">实例展示</h2>
+<span class="btn-primary js-timeout-model">model超时展示</span>
+</script>

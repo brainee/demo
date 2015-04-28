@@ -1,0 +1,26 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "pageview";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: 'pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'pageviewIndex',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/index.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+  <div class="cui-citys-bd">
+  </div>
+</script>

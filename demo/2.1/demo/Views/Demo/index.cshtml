@@ -1,0 +1,24 @@
+﻿@{
+  ViewBag.Title = "index";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/index',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/index.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+ <div class="cui-citys-bd">
+ </div>
+</script>

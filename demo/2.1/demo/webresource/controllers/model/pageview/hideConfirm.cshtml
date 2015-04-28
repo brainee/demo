@@ -1,0 +1,29 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "hideConfirm";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'hideConfirm',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/hideConfirm.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+
+<h2 class="guide-title">实例展示</h2>
+<p></p>
+<span class="btn-primary js-confirm-hide">三秒关闭</span>
+</script>

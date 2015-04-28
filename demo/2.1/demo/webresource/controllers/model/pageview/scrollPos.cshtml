@@ -1,0 +1,35 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "scrollPos";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'scrollPos',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/scrollPos.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * 记录滚动的xy值
+ */
+this.scrollPos()
+</code></pre>
+<h2 class="guide-title">实例展示</h2>
+<p>返回首页，并在log中查看position</p>
+<span class="btn-primary js-jump">点击跳转</span>
+</script>

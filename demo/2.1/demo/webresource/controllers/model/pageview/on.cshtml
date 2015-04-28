@@ -1,0 +1,50 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "on";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'on',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/on.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * on(type, [selector], function(e){ ... })，添加事件处理程序到对象集合中得元素上
+ * off(type, [selector], function(e){ ... })，移除通过on添加的事件.移除一个特定的事件处理程序,必须通过用on()添加的那个相同的函数。
+ * trigger(event, [args])，trigger在对象集合的元素上触发指定的事件
+ */
+    $('.js-on').on('click',function(){
+    $(this).css('background','#52bce8')
+    });
+    //解除.js-on的click事件后，点击.js-on按钮将不会变色
+    $('.js-off').on('click',function(){
+    $('.js-on').off('click');
+    });
+    //添加trigger函数后,.js-on按钮将会自动变色
+    $('.js-trigger').on('click',function(){
+    $('.js-on').trigger('click');
+    })
+</code></pre>
+<h2 class="guide-title">实例展示</h2>
+<p></p>
+<span class="btn-primary js-once">once事件</span>
+<span class="btn-primary js-on">on事件</span>
+<span class="btn-primary js-off">off事件</span>
+<span class="btn-primary js-trigger">trigger事件</span>
+</script>

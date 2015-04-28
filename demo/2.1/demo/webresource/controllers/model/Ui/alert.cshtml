@@ -1,0 +1,172 @@
+﻿@{
+  ViewBag.Title = "Ui index";
+}
+<script type="text/lizard-config">
+{
+  url_schema: '/ui',
+  viewName: 'ui_alert',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/ui/alert.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+ <div class="cui-citys-bd">
+ </div>
+<pre>
+<code>
+/*
+① 如果不是使用showMessage的话，在view离开时（onhide）时候需要做组件的销毁或者隐藏
+② 本身alert继承至layer类，所以具有以下特性
+//需要蒙版
+this.needMask = true;
+//需要点击蒙版删除
+this.maskToHide = true;
+//需要居中定位
+this.needReposition = true;
+//是否具有后退关闭弹出层需求（***这个接口容易导致框架bug，一般不使用***）
+this.hasPushState = false;;
+//类型为layer
+this.type = 'layer';
+
+
+//是否具有动画
+this.needAnimat = false;
+//具有动画情况，进入时候会执行的动画class
+this.animateInClass = 'cm-up-in';
+//具有动画情况，离开时候会执行的动画class
+this.animateOutClass = 'cm-up-out';
+
+//如果提供的class不满足条件，则自定义进入出去的class
+this.animateShowAction = null;
+this.animateHideAction = null;
+
+*/
+</code>
+</pre>
+  <ul class="line-list">
+    <li class="line-item js_demo01">框架基本用法</li>
+    <li class="line-item js_demo02">框架基本用法-带title</li>
+    <li class="line-item js_demo03">框架基本用法-重置回调</li>
+    <li class="line-item js_demo04">框架基本用法-showConfirm</li>
+    <li class="line-item js_demo05">框架基本用法-showConfirm-回调重置</li>
+  </ul>
+<pre>
+<code>
+demo01: function () {
+  this.showMessage('框架基本使用');
+},
+demo02: function () {
+  this.showMessage({
+    datamodel: {
+      title: '带标题',
+      content: '框架使用'
+    }
+  });
+},
+demo03: function () {
+  this.showMessage({
+    datamodel: {
+      content: '框架使用1'
+    },
+    okAction: function () {
+      alert('重置回调');
+      this.hide();
+    }
+  });
+},
+demo04: function () {
+  this.showConfirm({
+    datamodel: {
+      content: '框架使用'
+    },
+    okAction: function () {
+      alert('确定');
+      this.hide();
+    },
+    cancelAction: function () {
+      alert('取消');
+    }
+  });
+},
+demo05: function () {
+  this.showConfirm({
+    datamodel: {
+      content: '框架使用',
+      btns: [
+        { name: '取消1', className: 'cui-btns-cancel' },
+        { name: '确定1', className: 'cui-btns-ok' }
+      ]
+    },
+    okAction: function () {
+      alert('重置');
+      this.hide();
+    }
+  });
+},
+</code>
+</pre>
+
+  <ul class="line-list">
+    <li class="line-item js_demo06">单独使用，需要释放接口</li>
+  </ul>
+
+  <pre>
+<code>
+/*
+如果框架未提供样式，这里便需要业务
+.cui-roller-btns .cui-flexbd:nth-of-type(3) {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+*/
+  demo06: function () {
+  if (!this.alert01) {
+    this.alert01 = new UIAlert({
+      datamodel: {
+        content: '单独使用时，注意onHide时候释放资源，按钮样式需要自己定制',
+        btns: [
+          { name: '知道了', className: 'cui-btns-ok' },
+          { name: '不知道', className: 'cui-btns-no' },
+          { name: '未知', className: 'cui-btns-unknown' }
+        ]
+      },
+      events: {
+        'click .cui-btns-ok': 'okAction',
+        'click .cui-btns-no': 'noAction',
+        'click .cui-btns-unknown': 'unknownAction'
+      },
+      okAction: function () {
+        alert('知道了');
+        this.hide();
+      },
+      noAction: function () {
+        alert('不知道');
+        this.hide();
+      },
+      unknownAction: function () {
+        alert('未知');
+        this.hide();
+      }
+    });
+  }
+  this.alert01.show();
+},
+onHide: function () {
+  if (this.alert01)
+    this.alert01.hide();
+}
+</code>
+</pre>
+
+
+</script>

@@ -1,0 +1,31 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "cModel";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/model',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'cModel',
+  controller: '/webapp/demo2.1/webresource/controllers/model/cModel.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * 使用model定义接口
+ */
+<h2 class="guide-title">实例展示</h2>
+<span class="btn-primary js-model">model展示</span>
+</script>

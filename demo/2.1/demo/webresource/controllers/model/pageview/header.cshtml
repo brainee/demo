@@ -1,0 +1,43 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "header";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'header',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/header.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * 框架2.1 header用法
+ */
+ this.header.set({
+         title: 'header',
+         back: true,
+         events: {
+           returnHandler: function () {
+             Lizard.goBack();
+           }
+         }
+ });
+ this.header.show();
+</code>
+<h2 class="guide-title">实例展示</h2>
+<span class="btn-primary js-jump">点击跳转</span>
+</script>

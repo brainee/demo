@@ -1,0 +1,97 @@
+﻿@{
+  ViewBag.Title = "Ui index";
+}
+<script type="text/lizard-config">
+{
+  url_schema: 'ui/calendar',
+  viewName: 'ui_calendar',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/ui/calendar.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+
+  <div class="js_demo01_wrapper"></div>
+
+  <pre><code>
+/*
+这里模拟机酒的日历价格实现，机酒的业务逻辑是先显示两个月的数据，再动态加载2个月的数据，模拟其请求太过复杂，直接将其model返回数据取回
+*/
+demo02: function () {
+  var data = {/*数据源*/};
+  //获取所有的价格
+  this.calendr_price02 = data.DailyPrices;
+  this.loadCalendar02(2);
+  setTimeout($.proxy(function () {
+    //这里有个缺陷，不能再次传入数据，再次传入数据的话需要对源数据做处理
+    //所以这里搞一个小技巧，将数据引用做传递
+    //注意这里的数据源引用，这个很关键
+    this.calendr_price02 = {/*数据源*/}.DailyPrices;
+    //加两个月显示
+    this.addCalendar02(2);
+    this.$('.js_demo02_loading').hide();
+  }, this), 5000);
+},
+addCalendar02: function (displayMonth) {
+  if (!this.calendar02) return;
+  this.calendar02.addDisplayMonth(displayMonth);
+},
+loadCalendar02: function (displayMonth) {
+  var scope = this;
+  if (!this.calendar02) {
+    this.calendar02 = new UICalendar({
+      datamodel: {
+        displayMonthNum: displayMonth
+      },
+      wrapper: this.$el.find('.js_demo02_wrapper'),
+      //定制化每一个日期项目的显示
+      dayItemAction: function (dayObj, year, month, day, dateObj, difftime) {
+        //这里与价格日历做一个映射即可
+        var _time = dateObj.getTime();
+        //var _mappingTime = '/Date(' + _time + '+0800)/';
+        //找出映射项目
+        var _dayPrice = _.find(scope.calendr_price02, function (item) {
+          return item['Date'].indexOf(_time) != -1;
+        });
+        if (_dayPrice) {
+          dayObj.dayprice = _dayPrice.MinPrice;
+        }
+        var dateStr = '';
+        //如果有阳历节日，则优先
+        dateStr = dayObj.lunarHoliday || dayObj.lunarHoliday || dayObj.day1 || dayObj.day;
+        if (dayObj.dayprice) {
+          if (dayObj.dayprice.Current > 0) {
+            dateStr += 'i￥' + dayObj.dayprice.Current + '/i';
+          } else if (dayObj.dayprice.Current == 0) {
+            dateStr += 'i实时计价/i';
+          }
+        }
+        return 'em' + dateStr + '/em';
+      },
+      onItemClick: function (date, el, e) {
+      }
+    });
+  }
+  this.calendar02.show();
+},
+</code></pre>
+  <div>
+    <div class="js_demo02_wrapper"></div>
+    <div class="js_demo02_loading" style="height: 50px; text-align: center; background: #DAD7D7; line-height: 50px; height: 50px; ">
+      <span class="icon-loading"><i class="icon-loading-circle"></i></span>
+    </div>
+  </div>
+
+
+</script>

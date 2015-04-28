@@ -1,0 +1,52 @@
+﻿@{
+  ViewBag.Title = "Ui index";
+}
+<script type="text/lizard-config">
+{
+  url_schema: '/ui',
+  viewName: 'ui_loading',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {
+
+      };
+    }
+  },
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  controller: '/webapp/demo2.1/webresource/controllers/ui/loading.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+ <div class="cui-citys-bd">
+ </div>
+  <pre><code>
+//该功能不建议单独使用，统一使用框架的即可，不满足条件可以定制化
+    </code></pre>
+  <ul class="line-list">
+    <li class="line-item js_demo01">框架基本用法</li>
+    <li class="line-item js_demo02">框架基本用法-带文字-关闭按钮</li>
+  </ul>
+
+  <pre><code>
+
+demo01: function () {
+  this.showLoading();
+  setTimeout(function () {
+    Lizard.hideLoading();
+  }, 2000)
+},
+demo02: function () {
+  this.showLoading({
+    datamodel: {
+      content: '加载中...',
+      closeBtn: true
+    }
+  });
+},
+    </code></pre>
+
+</script>

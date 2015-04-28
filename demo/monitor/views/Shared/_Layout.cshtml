@@ -1,0 +1,65 @@
+<!doctype html>
+@using System.Configuration
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="description" content="携程全局搜索" />
+    <meta name="keywords" content="携程全局搜索" />
+    <!-- <meta name="multiView" content="on" lizardExpansion="true" /> -->
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/640.png?v=1.0" sizes="320x460">
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/940.png?v=1.0" sizes="640x920">
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/1004.png?v=1.0" sizes="768x1004">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://res.m.ctrip.com/html5/Content/images/57.png?v=1.0?v=1.0" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://res.m.ctrip.com/html5/Content/images/72.png?v=1.0?v=1.0" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://res.m.ctrip.com/html5/Content/images/114.png?v=1.0?v=1.0" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://res.m.ctrip.com/html5/Content/images/144.png?v=1.0?v=1.0" />
+    <link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/styles/h5/common/main.css" />
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="appBaseUrl" content="@Url.Content("~/")" />
+    <meta name="webresourceBaseUrl" content="@ConfigurationManager.AppSettings["WebresourceBaseUrl"]" />
+    <meta name="restfullApi" content="@ConfigurationManager.AppSettings["restfullApi"]" /> 
+    
+</head>
+<body>
+      @{
+        string scriptSrc = "";
+        string header = "";
+        try
+        {
+          var ua = HttpContext.Current.Request.UserAgent;
+          if (ua.ToLower().IndexOf("ctripwireless") > -1)
+          {
+            scriptSrc = "<script src=\"http://webresource.c-ctrip.com/code/lizard/2.1/web/lizard.hybrid.js\"></script>";
+            header = "display: none;";
+          }
+        }
+        catch (Exception)
+        {
+          scriptSrc = "";
+          header = "";
+        }
+      }
+      <div id="headerview" style="height:44px;@Html.Raw(header)">
+      </div>
+      <div id="main">
+        <div class="main-frame">
+          <div class="main-viewport"></div>
+          <div class="main-state"></div>
+        </div>
+      </div>
+      <div id="footer"></div>
+    @RenderBody()
+    <input type="hidden" id="page_id" value="wait" />
+    <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/2.1/web/lizard.seed.js" pdconfig="/webapp/monitor/webresource/demoConfig.js"></script>
+
+    @Html.Raw(scriptSrc)
+<script type="text/javascript">
+@{ var now = DateTime.Now; }
+var __SERVERDATE__ = { server: new Date(Date.parse('@now'.replace(/-/g, '/'))), local: new Date() };
+</script>
+</body>
+</html>

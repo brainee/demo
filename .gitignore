@@ -1,0 +1,14 @@
+/demo/CustomViewEngine.cs
+npm-debug.log
+UpgradeLog.htm
+demo.v12.suo
+demo/index.html
+Thumbs.db
+.log
+.DS_Store
+.idea
+
+
+package/webapp/
+package/node_modules/
+*.zip

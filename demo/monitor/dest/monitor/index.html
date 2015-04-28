@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <title>测试</title>
+    <meta charset="utf-8">
+    <meta name="description" content="携程全局搜索" />
+    <meta name="keywords" content="携程全局搜索" />
+    <!-- <meta name="multiView" content="on" lizardExpansion="true" /> -->
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/640.png" sizes="320x460">
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/940.png" sizes="640x920">
+    <link rel="apple-touch-startup-image" href="http://res.m.ctrip.com/html5/content/images/1004.png" sizes="768x1004">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://res.m.ctrip.com/html5/Content/images/57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://res.m.ctrip.com/html5/Content/images/72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://res.m.ctrip.com/html5/Content/images/114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://res.m.ctrip.com/html5/Content/images/144.png" />
+    <link rel="stylesheet" type="text/css" href="../lizard/webresource/styles/h5/common/main.css" />
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="appBaseUrl" content="/webapp/monitor/">
+    <meta name="webresourceBaseUrl" content="" />
+    <meta name="restfullApi" content="http://localhost:2000/restful/" /> 
+    
+<script>window.onerror = function(sMessage, sUrl, sLine) {
+    var str = "";
+    str += " 错误信息:" + sMessage + "\n";
+    str += " 错误地址:" + sUrl + "\n";
+    str += " 错误行数:" + sLine + "\n";
+    str += "<=========调用堆栈=========>\n";
+    var func = window.onerror.caller;
+    var index = 0;
+    while (func != null) {
+        //str += "第" + index + "个函数：" + func + "\n";
+        //str += "第" + index + "个函数：参数表："
+        //for(var i=0;i<func.arguments.count;i++)
+        //str += func.arguments[i] + ",";
+        //}
+        str += func;
+        str += "\n===================\n";
+        func = func.caller;
+        index++;
+    }
+    alert(str);
+    return true;
+};
+var require = { urlArgs: Date.now() };</script><script src="http://172.16.142.54:5389/webapp/monitor/dest/monitor/lizardlocalroute.js"></script></head>
+<body>
+      
+      <div id="headerview" style="display:none;height:44px;">
+      </div>
+      <div id="main">
+        <div class="main-frame">
+          <div class="main-viewport"></div>
+          <div class="main-state"></div>
+        </div>
+      </div>
+      <div id="footer"></div>
+    
+    <input type="hidden" id="page_id" value="wait" />
+    <script type="text/javascript" src="../lizard/webresource/code/lizard/2.1/web/lizard.seed.js" pdconfig="http://172.16.142.54:5389/webapp/monitor/dest/webresource/demoConfig.js"></script>
+
+    
+<script type="text/javascript">
+
+var __SERVERDATE__ = { server: new Date(Date.parse(''.replace(/-/g, '/'))), local: new Date() };
+</script>
+</body>
+</html>

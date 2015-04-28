@@ -1,0 +1,6 @@
+
+demoConfig.js
+----------------
+demoConfig.js
+text.js
+text!indexHtml

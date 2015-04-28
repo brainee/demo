@@ -1,0 +1,99 @@
+﻿@using System.Configuration;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>@ViewBag.Title</title>
+  <meta charset="utf-8">
+  <meta name="description" content="携程全局搜索" />
+  <meta name="keywords" content="携程全局搜索" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+  <!--框架首屏model加载超时 -->
+  <meta name="timeout" content="5000" lizardexpansion="true">
+  <link rel="apple-touch-startup-image" href="//pic.c-ctrip.com/h5/common/640.png" sizes="320x460">
+  <link rel="apple-touch-startup-image" href="//pic.c-ctrip.com/h5/common/940.png" sizes="640x920">
+  <link rel="apple-touch-startup-image" href="//pic.c-ctrip.com/h5/common/1004.png" sizes="768x1004">
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//pic.c-ctrip.com/h5/common/57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//pic.c-ctrip.com/h5/common/72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//pic.c-ctrip.com/h5/common/114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//pic.c-ctrip.com/h5/common/144.png" />
+  <!-- lizard2.1样式 -->
+
+  <link id="global_css" rel="stylesheet" href="http://webresource.c-ctrip.com/styles/h5/common/global.core.css?v=20150311_0_20">
+
+  <link rel="stylesheet" id="main_css" href="http://webresource.c-ctrip.com/styles/h5/common/main.css">
+  <link href="/webapp/demo2.1/webresource/style/hightlight/github.css" rel="stylesheet" type="text/css" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="appBaseUrl" content="@Url.Content("~/")" />
+  <meta name="restfullApi" content="@ConfigurationManager.AppSettings["restfullApi"]">
+</head>
+<body>
+ <!-- 直连代码，不是直连的，不需要 -->
+  @{
+    string scriptSrc = "";
+    string header = "";
+    try
+    {
+      var ua = HttpContext.Current.Request.UserAgent;
+      if (ua.ToLower().IndexOf("ctripwireless") > -1)
+      {
+        scriptSrc = "<script src=\"http://172.16.140.104:5389/lizard2.1/lizard.hybrid.src.js\"></script>";
+        header = "display: none;";
+      }
+    }
+    catch (Exception)
+    {
+      scriptSrc = "";
+      header = "";
+    }
+  }
+  <div id="headerview" style="height: 44px;@Html.Raw(header)">
+  </div>
+  <div id="main">
+    <div class="main-frame">
+      <div class="main-viewport"></div>
+      <div class="main-state"></div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  @RenderBody()
+  <input type="hidden" id="page_id">
+  <script type="text/javascript">
+@{ var now = DateTime.Now; }
+    var __SERVERDATE__ = { server: new Date(Date.parse('@now'.replace(/-/g, '/'))), local: new Date() }
+  </script>
+  <!-- debug 代码，无需关注 -->
+  <div id="log" style="border: 1px solid red; overflow: scroll;word-wrap: break-word;
+height: 60px; position: fixed; left: 0; right: 0; bottom: 20px;">
+  </div>
+  <script>
+    //lizard /code/2.1/6.0/Dev/webapporigin/lizard.seed.js
+    var _log = (function () {
+      var i = 0;
+      var el = document.getElementById('log');
+      return function (str, num) {
+        num = num || 3;
+        if (typeof str === 'object') {
+          str = JSON.stringify(str);
+        }
+        if (i++ > num) {
+          i = 0;
+          el.innerHTML = str;
+        } else {
+          el.innerHTML += ' ' + str;
+        }
+      };
+    })();
+
+    window.onerror = function (e) {
+      alert(e)
+
+    }
+
+  </script>
+  <!-- debug end -->
+
+  <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/2.1/web/lizard.seed.js" pdconfig="/webapp/demo2.1/webresource/demoConfig.js"></script>
+   <!-- 直连代码，不是直连的，不需要 -->
+  @Html.Raw(scriptSrc)
+</body>
+</html>

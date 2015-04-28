@@ -1,0 +1,1 @@
+var demoChannel={beautifyTime:function(e){var n=e.getHours();return 12>=n?"上午":"下午"}};

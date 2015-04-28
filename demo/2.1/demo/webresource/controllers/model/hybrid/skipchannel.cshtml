@@ -1,0 +1,33 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "h5tohybrid";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/hybrid',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'h5tohybrid',
+  controller: '/webapp/demo2.1/webresource/controllers/hybrid/skipchannel.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * h5跳转hybrid
+ */
+<h2 class="guide-title">实例展示</h2>
+<span class="btn-primary js-hybrid-channel">hybrid跳转频道</span>
+<span class="btn-primary js-h5-channel">h5跳转频道</span>
+</script>

@@ -1,0 +1,37 @@
+﻿@using System.Configuration;
+@{
+  ViewBag.Title = "dollar";
+}
+
+<script type="text/lizard-config">
+{
+  url_schema: '/pageview',
+  models: {
+    apis: [],
+    filter: function(datas) {
+      return {};
+    }
+  },
+
+  view:{
+    viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'dollar',
+  controller: '/webapp/demo2.1/webresource/controllers/pageview/dollar.js'
+}
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+<h2 class="guide-title">用法</h2>
+<pre><code>
+/*
+ * 获取view子节点
+ */
+this.$('class');
+</code></pre>
+<h2 class="guide-title">实例展示</h2>
+<span class="btn-primary js-btn">获取输入框</span>
+<pre><code>
+<input type="text" class="js-input field-text"/>
+</code></pre>
+</script>

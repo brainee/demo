@@ -1,0 +1,78 @@
+﻿@{
+  ViewBag.Title = "Ui header";
+}
+<script type="text/lizard-config">
+  {
+  url_schema: 'ui/header_sidebar',
+  models: {
+  apis: [],
+  filter: function(datas) {
+  return {
+
+  };
+  }
+  },
+  view:{
+  viewport: Lizard.T("viewportTmpl")
+  },
+  viewName: 'uiheadersidebar',
+  controller: '/webapp/demo2.1/webresource/controllers/ui/header_sidebar.js'
+  }
+</script>
+
+<script id="viewportTmpl" type="text/lizard-template">
+
+<pre>
+<code>
+/*
+***注意***
+  由于侧边栏需要与Hybrid tagname对应，而其小图标为UED提供也不能更改，所以这里有个tagname与iconname的映射关系
+  tagname主要用于Hybrid唤出，这里不能重复，iconname是前面小图标
+
+侧边栏功能依旧保持老接口的调用，调用方法如下
+*/
+this.header.set({
+  view: this,
+  title: '侧边栏的使用',
+  back: true,
+        
+  //这里侧边栏会被内部框架封装
+      moreMenus: [
+    {
+      tagname: 'more_my_favorite', iconname: 'share', value: '分享', callback: function (data, index, el) {
+        console.log('分享');
+        console.log(arguments);
+      }
+    },
+    {
+      tagname: 'more_phone', iconname: 'tel', value: '联系携程', callback: function () {
+        console.log('联系携程');
+      }
+    },
+    {
+      tagname: 'more_my_order', iconname: 'file', value: '我的订单', callback: function () {
+        console.log('我的订单');
+      }
+    },
+    {
+      tagname: 'more_my_favorite', iconname: 'love', value: '我的收藏', callback: function () {
+        console.log('我的收藏');
+      }
+    },
+    {
+      tagname: 'more_message_center', iconname: 'email', value: '消息中心', callback: function () {
+        console.log('消息中心');
+      }
+    },
+    {
+      tagname: 'more_home', iconname: 'home', value: '携程首页', callback: function () {
+        console.log('携程首页');
+      }
+    }
+  ]
+});
+</code>
+</pre>
+
+
+</script>
